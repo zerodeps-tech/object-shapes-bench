@@ -34,6 +34,7 @@ jobs:
 
       - name: Run shape benchmarks
         run: |
+          mkdir -p results
           npm run bench:shapes | tee results/node-${{ matrix.node-version }}.txt
           cat results/node-${{ matrix.node-version }}.txt >> $GITHUB_STEP_SUMMARY
 
