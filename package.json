@@ -1,0 +1,28 @@
+{
+  "name": "object-shapes-bench",
+  "version": "1.0.0",
+  "description": "Benchmarks for V8 hidden classes / inline caches / dictionary mode — companion repo for the zero_deps article.",
+  "type": "module",
+  "author": "zero_deps",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zerodeps-tech/object-shapes-bench"
+  },
+  "homepage": "https://github.com/zerodeps-tech/object-shapes-bench#readme",
+  "keywords": ["v8", "hidden-class", "inline-cache", "benchmark", "performance", "javascript"],
+  "license": "MIT",
+  "scripts": {
+    "bench": "npm run bench:shapes && npm run bench:creation",
+    "bench:shapes": "node bench/shapes.mjs",
+    "bench:creation": "node bench/creation.mjs",
+    "bench:trace": "node --trace-deopt --trace-opt bench/shapes.mjs",
+    "bench:inspect": "node --allow-natives-syntax bench/inspect.mjs",
+    "results": "node scripts/results.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "mitata": "^1.0.34"
+  }
+}

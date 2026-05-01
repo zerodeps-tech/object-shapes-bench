@@ -1,0 +1,49 @@
+name: bench
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [20, 22, 24]
+    name: Node ${{ matrix.node-version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Print runtime info
+        run: |
+          node --version
+          node -e "console.log('v8:', process.versions.v8)"
+
+      - name: Run shape benchmarks
+        run: |
+          npm run bench:shapes | tee results/node-${{ matrix.node-version }}.txt
+          cat results/node-${{ matrix.node-version }}.txt >> $GITHUB_STEP_SUMMARY
+
+      - name: Run creation benchmarks
+        run: |
+          npm run bench:creation | tee -a results/node-${{ matrix.node-version }}.txt
+          cat results/node-${{ matrix.node-version }}.txt >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-node-${{ matrix.node-version }}
+          path: results/node-${{ matrix.node-version }}.txt
