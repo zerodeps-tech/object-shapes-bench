@@ -1,4 +1,4 @@
-import { execSync } from 'node:child_process'
+import { execFileSync } from 'node:child_process'
 import { writeFileSync, mkdirSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -10,7 +10,7 @@ const header = `Node: ${process.version} | V8: ${process.versions.v8} | ${new Da
 const out = [header]
 
 for (const bench of ['shapes', 'creation']) {
-  const result = execSync(`node bench/${bench}.mjs`, { cwd: root, encoding: 'utf8' })
+  const result = execFileSync(process.execPath, ['--expose-gc', `bench/${bench}.mjs`], { cwd: root, encoding: 'utf8' })
   out.push(result)
 }
 

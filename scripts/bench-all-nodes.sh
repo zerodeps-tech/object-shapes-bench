@@ -18,9 +18,9 @@ for v in 20 22 24; do
   {
     echo "Node: $(node -v) | V8: $(node -e 'process.stdout.write(process.versions.v8)') | Date: $(date +%Y-%m-%d)"
     echo ""
-    node bench/shapes.mjs
+    node --expose-gc bench/shapes.mjs
     echo ""
-    node bench/creation.mjs
+    node --expose-gc bench/creation.mjs
   } > "results/node-$v.txt"
   echo "  ✓ results/node-$v.txt"
 done

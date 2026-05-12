@@ -1,6 +1,6 @@
-Node: v24.14.1 | V8: 13.6.233.17-node.44 | Date: 2026-05-01
+Node: v24.14.1 | V8: 13.6.233.17-node.44 | Date: 2026-05-12
 
-clk: ~3.98 GHz
+clk: ~4.01 GHz
 cpu: Apple M4
 runtime: node 24.14.1 (arm64-darwin)
 
@@ -8,34 +8,34 @@ benchmark                     avg (min … max) p75 / p99    (min … top 1%)
 --------------------------------------------- -------------------------------
 • object shape: field read
 --------------------------------------------- -------------------------------
-literal (1 shape, fast path)     1.02 ns/iter   1.01 ns   █                  
-                       (946.04 ps … 19.96 ns)   1.43 ns  ▄█                  
-                      (  0.09  b … 111.12  b)   0.10  b ▁███▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+literal (1 shape, fast path)   999.20 ps/iter 997.07 ps   ▃▆█                
+                        (946.04 ps … 7.18 ns)   1.20 ns   ███                
+                      (  0.09  b …  38.17  b)   0.10  b ▁▁████▄▂▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-stepwise (same order)            1.07 ns/iter   1.03 ns  █                   
-                      (956.05 ps … 901.39 ns)   2.11 ns  █                   
-                      (  0.09  b …  55.46  b)   0.10  b ▃█▄▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+stepwise (same order)            1.00 ns/iter   1.01 ns    ▂█                
+                       (956.05 ps … 10.76 ns)   1.17 ns    ██▄               
+                      (  0.09  b …  38.11  b)   0.10  b ▁▂▇███▄▃▂▂▁▁▁▁▁▁▁▁▁▁▁
 
-polymorphic IC (2 shapes)        1.12 ns/iter   1.11 ns   █                  
-                         (1.04 ns … 15.59 ns)   1.56 ns   █                  
-                      (  0.09  b … 108.79  b)   0.10  b ▁▆█▇▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+polymorphic IC (2 shapes)        1.10 ns/iter   1.10 ns       ▃  █           
+                         (1.03 ns … 27.15 ns)   1.19 ns      ▃██ █▃          
+                      (  0.09  b …  39.61  b)   0.10  b ▁▁▁▁▄██████▄▁▃▂▂▁▁▁▁▁
 
-megamorphic IC (6 shapes)        3.17 ns/iter   3.11 ns █▅                   
-                         (3.04 ns … 35.13 ns)   4.58 ns ██                   
-                      (  0.09  b …  97.10  b)   0.11  b ██▄▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+megamorphic IC (6 shapes)        3.10 ns/iter   3.08 ns  █                   
+                         (3.03 ns … 18.78 ns)   3.90 ns  █                   
+                      (  0.09  b …  95.03  b)   0.11  b ▄█▅▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-dictionary mode (after delete)  14.08 ns/iter  16.30 ns   █▃                 
-                         (7.46 ns … 92.08 ns)  34.50 ns  ▆██▄                
-                      (  0.09  b … 112.10  b)   0.16  b ▂█████▇▇▅▅▄▃▃▃▂▂▂▁▁▁▁
+dictionary mode (after delete)  24.27 ns/iter  26.40 ns      █▆     ▂█▅▇     
+                        (18.19 ns … 96.90 ns)  30.18 ns     ▆██▅▂ ▃▆████▃    
+                      (  0.09  b … 120.10  b)   0.21  b ▁▂▃██████████████▄▂▂▁
 
 summary
   literal (1 shape, fast path)
-   1.05x faster than stepwise (same order)
+   1.01x faster than stepwise (same order)
    1.1x faster than polymorphic IC (2 shapes)
-   3.12x faster than megamorphic IC (6 shapes)
-   13.82x faster than dictionary mode (after delete)
+   3.1x faster than megamorphic IC (6 shapes)
+   24.29x faster than dictionary mode (after delete)
 
-clk: ~4.00 GHz
+clk: ~4.01 GHz
 cpu: Apple M4
 runtime: node 24.14.1 (arm64-darwin)
 
@@ -43,29 +43,29 @@ benchmark                   avg (min … max) p75 / p99    (min … top 1%)
 ------------------------------------------- -------------------------------
 • object shape: creation
 ------------------------------------------- -------------------------------
-literal { id, name, age }      3.77 ns/iter   3.62 ns █                    
-                       (3.46 ns … 36.14 ns)   8.79 ns █▄                   
-                    (  1.09  b …  95.07  b)  48.12  b ██▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+literal { id, name, age }      3.64 ns/iter   3.58 ns █                    
+                       (3.41 ns … 22.61 ns)   9.17 ns █▇                   
+                    (  1.12  b … 148.42  b)  48.13  b ██▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-stepwise (same order)          4.25 ns/iter   4.14 ns █▆                   
-                       (3.94 ns … 30.17 ns)  10.04 ns ██                   
-                    ( 12.11  b …  90.11  b)  56.15  b ██▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+stepwise (same order)          4.16 ns/iter   4.12 ns  █                   
+                       (3.91 ns … 19.94 ns)   6.80 ns  █                   
+                    (  7.11  b …  88.12  b)  56.15  b ▂█▆▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-Object.create(null) + assign  21.76 ns/iter  21.62 ns  █▄                  
-                      (20.16 ns … 49.17 ns)  32.56 ns  ██                  
-                    ( 72.66  b … 296.19  b) 184.21  b ▆██▆▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+Object.create(null) + assign  21.73 ns/iter  21.76 ns   █                  
+                      (20.78 ns … 81.26 ns)  27.99 ns ▆ █                  
+                    ( 75.15  b … 288.19  b) 184.24  b █▅█▄▆▃▃▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-class instance                 3.68 ns/iter   3.62 ns  █                   
-                       (3.41 ns … 29.15 ns)   6.33 ns  █                   
-                    (  4.12  b … 176.13  b)  48.13  b ▅█▇▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+class instance                 3.57 ns/iter   3.56 ns  ▄█                  
+                       (3.37 ns … 14.55 ns)   5.24 ns  ██                  
+                    (  7.10  b …  88.11  b)  48.12  b ▂██▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
-factory (closure)              2.50 ns/iter   2.21 ns  █                   
-                      (1.75 ns … 177.35 ns)   8.71 ns  █                   
-                    (  4.10  b …  88.11  b)  48.10  b ██▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+factory (closure)              2.34 ns/iter   2.12 ns  █                   
+                      (1.74 ns … 178.02 ns)   8.61 ns  █                   
+                    (  4.10  b …  88.11  b)  48.10  b ██▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
 
 summary
   factory (closure)
-   1.47x faster than class instance
-   1.51x faster than literal { id, name, age }
-   1.7x faster than stepwise (same order)
-   8.7x faster than Object.create(null) + assign
+   1.52x faster than class instance
+   1.55x faster than literal { id, name, age }
+   1.77x faster than stepwise (same order)
+   9.27x faster than Object.create(null) + assign

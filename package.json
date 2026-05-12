@@ -13,9 +13,10 @@
   "license": "MIT",
   "scripts": {
     "bench": "npm run bench:shapes && npm run bench:creation",
-    "bench:shapes": "node bench/shapes.mjs",
-    "bench:creation": "node bench/creation.mjs",
-    "bench:trace": "node --trace-deopt --trace-opt bench/shapes.mjs",
+    "bench:nodes": "./scripts/bench-all-nodes.sh",
+    "bench:shapes": "node --expose-gc bench/shapes.mjs",
+    "bench:creation": "node --expose-gc bench/creation.mjs",
+    "bench:trace": "node --expose-gc --trace-deopt --trace-opt bench/shapes.mjs",
     "bench:inspect": "node --allow-natives-syntax bench/inspect.mjs",
     "results": "node scripts/results.mjs"
   },
