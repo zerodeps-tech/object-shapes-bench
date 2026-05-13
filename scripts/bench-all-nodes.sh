@@ -12,7 +12,7 @@ source "${NVM_DIR:-$HOME/.nvm}/nvm.sh"
 
 mkdir -p results
 
-for v in 20 22 24; do
+for v in 20 22 24 26; do
   echo "▶ Node $v..."
   nvm use "$v" --silent
   {
