@@ -118,8 +118,8 @@ npm run bench:inspect
 
 ## Ссылки
 
-- Статья: _[ссылка появится после публикации]_ — [@zero_deps](https://t.me/zero_deps)
-- Слайды: _[ссылка появится после митапа]_
+- Статья: [@zero_deps](https://t.me/zero_deps/103)
+- Слайды: [Объекты в JS не бесплатные](https://talks.zerodeps.tech/obj-cost-piterjs)
 - Канал: [t.me/zero_deps](https://t.me/zero_deps) — Node.js perf, V8 internals, highload.
 
 ---
